@@ -1,0 +1,5 @@
+The notebook uses plotly and as github doesnt support it, please use the below link to checkout interactive plots
+https://nbviewer.jupyter.org/github/saianil58/Supervised-Learning/blob/master/Classifications/Personal_loan_campaign/bank.ipynb
+
+There is a basic dashborad created with good insights about the data, please check it at
+https://public.tableau.com/profile/sai.anil#!/vizhome/TheraBankPersonalLoanCampaign/FinalDash
