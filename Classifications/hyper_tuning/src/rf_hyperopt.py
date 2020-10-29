@@ -16,9 +16,9 @@ from sklearn import ensemble
 from sklearn import metrics
 from sklearn import model_selection
 
-from hyperopt import hp, fmin, tpe, Trails
+from hyperopt import hp, fmin, tpe, Trials
 
-from hyperopt.pll.base import scope
+from hyperopt.pyll.base import scope
 
 def optimize(params, x, y):
     """
@@ -29,7 +29,7 @@ def optimize(params, x, y):
     return -ve accuracy score to optimize
     """
     # initilize model with current params
-    model = ensemble.RandomForestClassifiers(**params)
+    model = ensemble.RandomForestClassifier(**params)
     
     # initialize stratified kfold
     kf = model_selection.StratifiedKFold(n_splits=5)
@@ -89,5 +89,21 @@ if __name__=="__main__":
             }
     
     # partial function
-    optimization_function = 
+    optimization_function = partial(
+                optimize,
+                x=X,
+                y=y
+                )
+    # initialize trials to keep logging information
+    trials = Trials()
+    
+    # run hyperopt
+    hopt = fmin(
+                fn=optimization_function,
+                space=param_space,
+                algo=tpe.suggest,
+                max_evals=40,
+                trials=trials
+                )
+    print(hopt)
         
